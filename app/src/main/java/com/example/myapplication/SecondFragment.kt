@@ -25,7 +25,9 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextView>(R.id.textview_second).setText("从上个页面传过来的数据：${FirstFragmentArgs.fromBundle(requireArguments()).type}${FirstFragmentArgs.fromBundle(requireArguments()).age}")
+        arguments?.let {
+            view.findViewById<TextView>(R.id.textview_second).setText("从上个页面传过来的数据：${FirstFragmentArgs.fromBundle(requireArguments()).type}${FirstFragmentArgs.fromBundle(requireArguments()).age}")
+        }
 
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
